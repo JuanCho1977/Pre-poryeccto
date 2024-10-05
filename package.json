@@ -14,7 +14,7 @@
   "description": "",
   "devDependencies": {
     "nodemon": "^3.1.4"
-  },
+  },"directories": {},
   "dependencies": {
     "express": "^4.19.2",
     "express-handlebars": "^6.0.7",

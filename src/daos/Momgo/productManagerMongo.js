@@ -6,6 +6,7 @@ class productManagerMongo {
         this.model = productModel
     }
     getProducts   = async () => await this.model.find({}).lean()
+    getProductCode = async (code) => await this.model.find({'code': code})
     getProduct = async id => await this.model.findOne({ '_id': id }).lean();
     createProduct = async newProduct => await this.model.create(newProduct)
     deleteProduct = async opts => await this.model.deleteOne({'_id':opts})

@@ -75,7 +75,7 @@ router.post('/carts', async (req, res) => {
         res.render('product', {
             title: 'Carritos de Compras',
             products: cartProducts 
-        });
+        })
     } catch (ERROR) {
         console.log('Error:', ERROR);
         res.status(500).send({ status: 'error', message: 'Error al obtener los productos del carrito' })
@@ -199,9 +199,10 @@ router.get('/products', async (req, res) => {
                 currentPage: products.page,
                 totalPages: products.totalPages,
                 hasNextPage: products.hasNextPage,
-                hasPreviousPage: products.hasPreviousPage,
+                hasPrevPage: products.hasPrevPage,
                 nextPage: products.nextPage,
-                previousPage: products.previousPage,
+                prevPage: products.prevPage,
+                limit: products.limit
                 
                 })
     }

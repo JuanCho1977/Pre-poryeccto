@@ -13,7 +13,14 @@ router.post('/product', async (req, res) => {
         const {title,code,price,thumbnail,category} = req.body
         if(!title || !code ||  !price || !category){
             return res(404).send({ status: 'error', message: 'debe completar los campos obligatorios' })
-        }      const response = await productService.createProduct(req.body)
+        }      
+            const existCode = await productService.getProductCode(code); 
+                console.log(existCode)
+            if (existCode == code) {
+          
+                return res.status(400).send({ status: 'error', message: `El código ${code} ya está registrado` });
+                }
+                    const response = await productService.createProduct(req.body)
                     res.send({status: 'success', payload: response})
                     console.log("se a creado con exito la carga")
     } catch (ERROR) {
@@ -104,10 +111,3 @@ router.delete('/:pid', async (req,res) =>{
 
 module.exports = router
 
-
-//try {
-//
-//} catch (e) {
-//    
-//    console.error("ERROR!")
-//} 

@@ -13,7 +13,7 @@
             
 
             <label for="page">pagina</label>
-            <input type="number" id="page" name="page" value="{{{currentPage}}}" min="1" required>
+            <input type="number" id="page" name="page" value="{{{currentPage}}}" min="1">
             <button class="btn btn-primary">MOSTRAR</button> 
 
         </div>
@@ -68,24 +68,32 @@
         
     </form>
         
-        <div>
+        <div class="pagination">
 
-            <p>Pagina {{currentPage}} of {{totalPages}}</p>
             
-            {{#if hasPrevPage }}
-                <p><a href="/products?page={{prevPage}}"style="margin-right: 40px;">Anterior</a></p>
+            
+            {{#if hasPrevPage }} 
+                
+                <a href="?page={{prevPage}}"style="margin-right: 40px;">Anterior</a>
+                
+            {{else}}
+                <span class="disabled">Anterior</span>
+                
             {{/if}}    
 
             {{#if hasNextPage}}
-                <p><a href="/products?page={{nextPage}}"style="margin-left: 40px;">Siguiente</a></p>
+                <a href="?page={{nextPage}}"style="margin-left: 40px;">Siguiente</a>
+            {{else}}
+            <span class="disabled">Siguiente</span>
             {{/if}}
                 
+            <p>Pagina {{currentPage}} of {{totalPages}}</p>
+            <p>Total de paginas: {{totalPages}}</p>
+            <p>Limit: {{limit}}</p>
+            <p>pagina Anterior: {{prevPage}}</p>
+            <p>pagina Siguiente: {{nextPage}}</p>
                 
-                
-                <p>Total de paginas: {{totalPages}}</p>
-                <p>Limit: {{limit}}</p>
-                <p>pagina Anterior: {{prevPage}}</p>
-                <p>pagina Siguiente: {{nextPage}}</p>
+            
                 
              
         
